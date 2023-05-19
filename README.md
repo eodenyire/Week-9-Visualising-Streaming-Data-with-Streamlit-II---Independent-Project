@@ -32,6 +32,7 @@ Deploy the dashboard to a cloud-based platform like Heroku or AWS to make it pub
   
 <p> Python script for collecting and processing real-time posts from the Reddit API.
 <p> Interactive data visualization dashboard created using Streamlit.
-<p> Deployment of the dashboard to a cloud-based platform for public access.
-Note: The project assumes familiarity with Python programming, working with APIs, data processing using Pandas, data visualization with Matplotlib/Seaborn, and web deployment using platforms like Heroku or AWS.
+<p> Deployment of the dashboard to a cloud-based platform for public access
+  
+<p> Note: The project assumes familiarity with Python programming, working with APIs, data processing using Pandas, data visualization with Matplotlib/Seaborn, and web deployment using platforms like Heroku or AWS.
 
