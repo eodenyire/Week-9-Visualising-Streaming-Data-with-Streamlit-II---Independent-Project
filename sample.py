@@ -4,6 +4,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import plotly.express as px
 
+
 # Defining the keywords to monitor for telecom fraud
 keywords = ['telecoms scam', 'phone fraud', 'billing fraud', 'identity theft']
 
