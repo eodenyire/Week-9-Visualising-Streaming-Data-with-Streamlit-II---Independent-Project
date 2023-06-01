@@ -1,30 +1,24 @@
-import praw
+import requests
 import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
 import plotly.express as px
 
-# Setting up Reddit API credentials and authentication
-USER_AGENT = "eodenyire"
-reddit = praw.Reddit(
-  client_id='qJvKpObl8Gsvchxf3KSwlQ',
-  client_secret='69Fm5sEThyZ0ZzDFXcbPTrAgYrZN0A',
-  user_agent='eodenyire',
-)
-
 # Defining the keywords to monitor for telecom fraud
 keywords = ['telecoms scam', 'phone fraud', 'billing fraud', 'identity theft']
 
-# Fetching real-time posts from Reddit API
+# Fetching real-time posts from Pushshift API
 posts = []
 for keyword in keywords:
-  subreddit = reddit.subreddit('all')
-  for post in subreddit.search(keyword, limit=20, sort='new'):
+  url = f"https://api.pushshift.io/reddit/search/submission/?q={keyword}&size=20&sort=new"
+  response = requests.get(url)
+  data = response.json()
+  for post in data['data']:
     posts.append({
-      'post_text': post.title,
-      'user_name': post.author.name,
-      'subreddit': post.subreddit.display_name,
-      'date': pd.to_datetime(post.created_utc, unit='s'),
+      'post_text': post['title'],
+      'user_name': post['author'],
+      'subreddit': post['subreddit'],
+      'date': pd.to_datetime(post['created_utc'], unit='s'),
     })
 
 # Creating a DataFrame from the fetched posts
